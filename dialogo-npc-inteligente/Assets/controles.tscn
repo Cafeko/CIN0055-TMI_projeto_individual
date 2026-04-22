@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3v4xtchtnnh"]
+
+[ext_resource type="Script" uid="uid://digsvgm0jw4yr" path="res://Assets/controles.gd" id="1_cg2eo"]
+[ext_resource type="StyleBox" uid="uid://c7380cfd57k0i" path="res://Styles/dialog_box_button_normal.tres" id="2_rdw6q"]
+[ext_resource type="StyleBox" uid="uid://cm7t52cnp4rl7" path="res://Styles/dialog_box_button_pressed.tres" id="3_lmi18"]
+[ext_resource type="StyleBox" uid="uid://b38kmepb46763" path="res://Styles/dialog_box_button_hover.tres" id="4_55arv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qwf3l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4itc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_earxt"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+bg_color = Color(0.0090047205, 0.009763091, 0.10369905, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cg2eo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coq2e"]
+
+[node name="Controles" type="Control" node_paths=PackedStringArray("npc_dialog_text_box", "player_message", "npc_name_box")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cg2eo")
+npc_dialog_text_box = NodePath("VBoxContainer/TextBox")
+player_message = NodePath("VBoxContainer/HBoxContainer/LineEdit")
+npc_name_box = NodePath("VBoxContainer/HBoxContainer2/Nome")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -502.0
+offset_top = -180.0
+offset_right = 502.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_rdw6q")
+theme_override_styles/pressed = ExtResource("3_lmi18")
+theme_override_styles/hover = ExtResource("4_55arv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qwf3l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w4itc")
+text = "<"
+
+[node name="Nome" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_rdw6q")
+theme_override_styles/pressed = ExtResource("3_lmi18")
+theme_override_styles/hover = ExtResource("4_55arv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qwf3l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w4itc")
+text = ">"
+
+[node name="TextBox" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_earxt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_rdw6q")
+theme_override_styles/pressed = ExtResource("3_lmi18")
+theme_override_styles/hover = ExtResource("4_55arv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cg2eo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_coq2e")
+text = "PERGUNTAR"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button" to="." method="_select_previous_suspect"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button2" to="." method="_select_next_suspect"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

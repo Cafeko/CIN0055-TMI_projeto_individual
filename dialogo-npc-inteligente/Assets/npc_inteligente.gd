@@ -20,7 +20,6 @@ var mensages_list = []
 func _ready():
 	configura_http()
 	init_message_list()
-	Global.connect_npc_dialog_box.emit(self)
 
 
 # --- Funções de mensagens  ---------------------------------------------------------------------- #

@@ -3,6 +3,7 @@ class_name Dialog_Box
 
 @export var npc_dialog_text_box : RichTextLabel
 @export var player_message : LineEdit
+@export var npc_name_box : Label
 
 var current_npc : NPC_Inteligente
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 # Muda o NPC_Inteligente que vai receber as mensagens enviadas.
 func connect_npc(npc):
 	current_npc = npc
+	npc_name_box.text = current_npc.suspeito_data["nome"]
 
 # Atualiza caixa de texto do npc com o texto recebido.
 func _update_npc_dialog(text:String):
@@ -27,4 +29,10 @@ func _on_button_pressed():
 		player_message.text = ""
 	else:
 		print("Mensagem não pode ser vazia")
+
+func _select_previous_suspect():
+	Global.suspect_list_preious.emit()
+
+func _select_next_suspect() -> void:
+	Global.suspect_list_next.emit()
 # ------------------------------------------------------------------------------------------------ #

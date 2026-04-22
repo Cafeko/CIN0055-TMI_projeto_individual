@@ -1,6 +1,6 @@
 extends Node
 
-signal all_ready
+#signal all_ready
 
 @export var caso_path : String
 @export var suspeitos_list : Suspeitos_List
@@ -11,7 +11,7 @@ var dados_suspeitos
 func _ready():
 	load_caso()
 	cria_suspeitos()
-	all_ready.emit()
+	#all_ready.emit()
 
 # Carrega informações do arquivo com os dados do caso e dos suspeitos.
 func load_caso():
@@ -22,8 +22,9 @@ func load_caso():
 	dados_suspeitos = dados["suspeitos"]
 
 
-# Cria os suspeitos que serão interrogados
+# Cria os suspeitos que serão interrogados e adiciona eles a lista de suspeitos.
 func cria_suspeitos():
 	for sus_data in dados_suspeitos:
 		var novo_suspeito = Suspeito.new(dados_caso, sus_data)
 		suspeitos_list.add_Suspeitos(novo_suspeito)
+	suspeitos_list.select_suspeito(0)
