@@ -1,6 +1,9 @@
 extends Node2D
 class_name NPC_Inteligente
 
+@export var npc_system : String = ""
+@export var message_list_size : int = 25
+
 @onready var http = $HTTPRequest
 
 enum Request_Stages {CREATE, POLL}
@@ -11,12 +14,37 @@ var model = "openai/gpt-4.1-mini"
 var current_request_stage : Request_Stages
 var get_request_url = ""
 
-func _ready():
-	Global.connect_npc_dialog_box.emit(self)
+var mensages_list = []
 
+func _ready():
+	init_message_list()
+	Global.connect_npc_dialog_box.emit(self)
+# ------------------------------------------------------------------------------------------------ #
+# Inicia lista de mensagens com o contexto do sistema.
+func init_message_list():
+	mensages_list = [{"role": "system", "content": npc_system}]
+
+# Adiciona uma nova mensagem a lista de mensagens, removendo as mais antiga caso passe do limite.
+# Remove pergunta e resposta mais antiga para evitar que a IA se confunda.
+func add_new_message(message):
+	if mensages_list.size() > message_list_size + 1:
+		mensages_list.remove_at(1)
+		mensages_list.remove_at(1)
+	mensages_list.append(message)
+
+# Adiciona mensagens que são mandadas pelo usuario.
+func add_user_message(text):
+	var user_message = {"role": "user", "content": text}
+	add_new_message(user_message)
+
+# Adiciona mensagens de resposta da IA (pra guardar o contexto).
+func add_assistant_message(text):
+	var assistant_message = {"role": "assistant", "content": text}
+	add_new_message(assistant_message)
+# ------------------------------------------------------------------------------------------------ #
 # --- Funções de comunicação com IA  ------------------------------------------------------------- #
-# Utiliza API para mandar uma requisição para a IA.
-func _send_to_ai(player_text):
+# Utiliza API para mandar uma requisição com uma lista de mensagens para a IA.
+func _send_to_ai():
 	current_request_stage = Request_Stages.CREATE
 	# URL api:
 	var selected_url = url
@@ -29,13 +57,9 @@ func _send_to_ai(player_text):
 	var body = {
 		"version": model,
 		"input": {
-			"messages": [
-			#{"role": "system", "content": "Você é um ferreiro rabugento em um mundo medieval."},
-			{"role": "user","content": player_text}
-			#{"role": "assistant", "content": "Já te disse que não vendo espadas baratas."}
-			]
+			"messages": mensages_list
+			}
 		}
-	}
 	# Converte corpo em json:
 	var json = JSON.stringify(body)
 	# Atualiza dialog box para exibir "Pensando ..." enquanto espera uma resposta.
@@ -54,11 +78,13 @@ func _on_HTTPRequest_request_completed(_result, _response_code, _headers, body):
 		current_request_stage = Request_Stages.POLL
 		await get_tree().create_timer(1.0).timeout
 		_check_result(get_request_url)
+	# Estado de POLL: Recebe o resultado e salva na lista de mensagens.
 	elif current_request_stage == Request_Stages.POLL:
 		if json.has("status") and json["status"] is String and json["status"] == "succeeded":
 			var resposta = ""
 			for t in json["output"]:
 				resposta += t
+			add_assistant_message(resposta)
 			send_text_to_dialog_box(resposta)
 		elif json.has("status") and json["status"] is float and json["status"] == 401.0:
 			print("HTTP 401.0 - Unauthorized (Não Autorizado), indica que a solicitação feita ao \
@@ -78,9 +104,10 @@ func _check_result(consulta_url):
 	http.request(consulta_url, headers)
 # ------------------------------------------------------------------------------------------------ #
 # --- Funções de interação com interface --------------------------------------------------------- #
-# Envia texto recebido para a IA.
+# Adiciona texto recebido a lista de mensagens e manda para a IA.
 func send_message_to_ia(text):
-	_send_to_ai(text)
+	add_user_message(text)
+	_send_to_ai()
 
 # Emite sinal enviando texto recebido para a Dialog_Box. 
 func send_text_to_dialog_box(text):
