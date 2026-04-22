@@ -6,18 +6,17 @@ class_name NPC_Inteligente
 enum Request_Stages {CREATE, POLL}
 
 var url = "https://api.replicate.com/v1/predictions"
-var token = "r8_F8Vttt1vYquJ7Ryf6p7Sz108WSxW4Vu4FOGL4"
+var token = "Bote seu token aqui"
 var model = "openai/gpt-4.1-mini"
 var current_request_stage : Request_Stages
 var get_request_url = ""
 
 func _ready():
-	var texto = "Me de 5 exemplos de frutas doce"
-	send_to_ai(texto)
+	Global.connect_npc_dialog_box.emit(self)
 
 # --- Funções de comunicação com IA  ------------------------------------------------------------- #
 # Utiliza API para mandar uma requisição para a IA.
-func send_to_ai(player_text):
+func _send_to_ai(player_text):
 	current_request_stage = Request_Stages.CREATE
 	# URL api:
 	var selected_url = url
@@ -39,6 +38,8 @@ func send_to_ai(player_text):
 	}
 	# Converte corpo em json:
 	var json = JSON.stringify(body)
+	# Atualiza dialog box para exibir "Pensando ..." enquanto espera uma resposta.
+	send_text_to_dialog_box("Pensando ...")
 	# Manda a requisição http:
 	http.request(selected_url, headers, HTTPClient.METHOD_POST, json)
 
@@ -52,23 +53,36 @@ func _on_HTTPRequest_request_completed(_result, _response_code, _headers, body):
 		get_request_url = json["urls"]["get"]
 		current_request_stage = Request_Stages.POLL
 		await get_tree().create_timer(1.0).timeout
-		check_result(get_request_url)
+		_check_result(get_request_url)
 	elif current_request_stage == Request_Stages.POLL:
-		if json.has("status") and json["status"] == "succeeded":
+		if json.has("status") and json["status"] is String and json["status"] == "succeeded":
 			var resposta = ""
 			for t in json["output"]:
 				resposta += t
-			print(resposta)
+			send_text_to_dialog_box(resposta)
+		elif json.has("status") and json["status"] is float and json["status"] == 401.0:
+			print("HTTP 401.0 - Unauthorized (Não Autorizado), indica que a solicitação feita ao \
+servidor falhou porque as credenciais de autenticação são inválidas, \
+ausentes ou expiradas.")
 		else:
 			# continua tentando
 			await get_tree().create_timer(2.0).timeout
-			check_result(get_request_url)
+			_check_result(get_request_url)
 
 
 # Faz a consulta do resultado da requisição utilizando a url de consulta.
-func check_result(consulta_url):
+func _check_result(consulta_url):
 	var headers = [
 		"Authorization: Token %s" % token
 	]
 	http.request(consulta_url, headers)
+# ------------------------------------------------------------------------------------------------ #
+# --- Funções de interação com interface --------------------------------------------------------- #
+# Envia texto recebido para a IA.
+func send_message_to_ia(text):
+	_send_to_ai(text)
+
+# Emite sinal enviando texto recebido para a Dialog_Box. 
+func send_text_to_dialog_box(text):
+	Global.dialog_box_update_text.emit(text)
 # ------------------------------------------------------------------------------------------------ #

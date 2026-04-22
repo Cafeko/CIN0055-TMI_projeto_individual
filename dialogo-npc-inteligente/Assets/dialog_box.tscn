@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3v4xtchtnnh"]
+
+[ext_resource type="Script" uid="uid://digsvgm0jw4yr" path="res://Assets/dialog_box.gd" id="1_cg2eo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_earxt"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+bg_color = Color(0.0090047205, 0.009763091, 0.10369905, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cg2eo"]
+bg_color = Color(0, 0.52709246, 0.09168307, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_coq2e"]
+bg_color = Color(6.3773246e-07, 0.35361147, 0.047826707, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar611"]
+bg_color = Color(0, 0.58269525, 0.10450628, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cg2eo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coq2e"]
+
+[node name="Dialog_Box" type="Control" node_paths=PackedStringArray("npc_dialog", "player_message")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cg2eo")
+npc_dialog = NodePath("VBoxContainer/TextBox")
+player_message = NodePath("VBoxContainer/HBoxContainer/LineEdit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1000, 175)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -502.0
+offset_top = -180.0
+offset_right = 502.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="TextBox" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_earxt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_cg2eo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_coq2e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ar611")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cg2eo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_coq2e")
+text = "PERGUNTAR"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
