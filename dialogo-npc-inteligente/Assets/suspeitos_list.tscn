@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://rhp2g7wakgqo"]
+
+[ext_resource type="Script" uid="uid://cwcsux0gxytuf" path="res://Assets/suspeitos_list.gd" id="1_rg3xd"]
+
+[node name="Suspeitos_List" type="Node2D"]
+script = ExtResource("1_rg3xd")

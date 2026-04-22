@@ -4,7 +4,3 @@
 
 [node name="NPC_Inteligente" type="Node2D"]
 script = ExtResource("1_dlf5e")
-
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
-
-[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

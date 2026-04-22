@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyvdrqqwpg6kp"]
+[gd_scene load_steps=4 format=3 uid="uid://cyvdrqqwpg6kp"]
 
+[ext_resource type="PackedScene" uid="uid://c0jtl8ce3u17n" path="res://Assets/criador_de_casos.tscn" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b3v4xtchtnnh" path="res://Assets/dialog_box.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://bq4eimyig8np4" path="res://Assets/npc_inteligente.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://rhp2g7wakgqo" path="res://Assets/suspeitos_list.tscn" id="2_8gbba"]
 
 [node name="Main" type="Node"]
 
+[node name="Suspeitos_List" parent="." instance=ExtResource("2_8gbba")]
+
 [node name="Dialog_Box" parent="." instance=ExtResource("1_jjgbg")]
 
-[node name="NPC_Inteligente" parent="." instance=ExtResource("2_bo1nx")]
+[node name="Criador_de_casos" parent="." node_paths=PackedStringArray("suspeitos_list") instance=ExtResource("1_8gbba")]
+caso_path = "res://Data/Caso.json"
+suspeitos_list = NodePath("../Suspeitos_List")

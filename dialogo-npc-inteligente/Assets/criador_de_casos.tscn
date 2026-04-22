@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0jtl8ce3u17n"]
+
+[ext_resource type="Script" uid="uid://csh31inajd67g" path="res://Assets/criador_de_casos.gd" id="1_0mjh0"]
+
+[node name="Criador_de_casos" type="Node"]
+script = ExtResource("1_0mjh0")

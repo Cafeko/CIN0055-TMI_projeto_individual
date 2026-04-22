@@ -12,7 +12,7 @@ func _ready() -> void:
 
 # --- Funções ------------------------------------------------------------------------------------ #
 # Muda o NPC_Inteligente que vai receber as mensagens enviadas.
-func connect_npc(npc:NPC_Inteligente):
+func connect_npc(npc):
 	current_npc = npc
 
 # Atualiza caixa de texto do npc com o texto recebido.

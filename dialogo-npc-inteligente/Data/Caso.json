@@ -1,0 +1,57 @@
+{
+  "caso": {
+	"titulo": "O Assassinato na Mansão Blackwood",
+	"descricao": "A vítima, Arthur Blackwood, foi encontrada morta na biblioteca de sua mansão às 22h. Ele foi atingido na cabeça com um candelabro de metal. Não havia sinais de arrombamento.",
+	"local": "Biblioteca da mansão",
+	"hora_crime": "22:00",
+	"arma": "Candelabro de metal",
+	"detalhes": [
+	  "A porta da biblioteca estava destrancada",
+	  "Havia um copo de vinho quebrado no chão",
+	  "A vítima discutiu com alguém antes de morrer",
+	  "Uma janela estava aberta",
+      "Pegadas de sapato estavam próximas à estante"
+	]
+  },
+  "suspeitos": [
+	{
+	  "id": 0,
+	  "nome": "Eduardo (Mordomo)",
+	  "culpado": false,
+	  "personalidade": "Calmo, educado e leal",
+	  "alibi": "Estava na cozinha preparando chá às 22h",
+	  "informacoes": [
+		"Trabalha para a família há 20 anos",
+		"Ouviu um barulho alto vindo da biblioteca",
+		"Viu Clara passando pelo corredor pouco antes do crime",
+        "Diz que a vítima estava nervosa mais cedo"
+	  ]
+	},
+	{
+	  "id": 1,
+	  "nome": "Clara (Empregada)",
+	  "culpado": true,
+	  "personalidade": "Nervosa, defensiva",
+	  "alibi": "Diz que estava limpando o andar de cima",
+	  "informacoes": [
+		"Teve uma discussão com a vítima mais cedo",
+		"Foi vista perto da biblioteca pouco antes do crime",
+		"Estava endividada e precisava de dinheiro",
+        "Suas pegadas combinam com as encontradas no local"
+	  ]
+	},
+	{
+	  "id": 2,
+	  "nome": "Ricardo (Herdeiro)",
+	  "culpado": false,
+	  "personalidade": "Arrogante, impaciente",
+	  "alibi": "Estava em seu quarto bebendo",
+	  "informacoes": [
+		"Tinha conflitos frequentes com a vítima",
+		"É o principal herdeiro da fortuna",
+		"Afirma não ter saído do quarto",
+        "Não há evidências físicas ligando-o ao crime"
+	  ]
+	}
+  ]
+}

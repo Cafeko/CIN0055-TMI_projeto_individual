@@ -4,7 +4,7 @@ class_name NPC_Inteligente
 @export var npc_system : String = ""
 @export var message_list_size : int = 25
 
-@onready var http = $HTTPRequest
+@onready var http = HTTPRequest.new()
 
 enum Request_Stages {CREATE, POLL}
 
@@ -16,10 +16,14 @@ var get_request_url = ""
 
 var mensages_list = []
 
+
 func _ready():
+	configura_http()
 	init_message_list()
 	Global.connect_npc_dialog_box.emit(self)
-# ------------------------------------------------------------------------------------------------ #
+
+
+# --- Funções de mensagens  ---------------------------------------------------------------------- #
 # Inicia lista de mensagens com o contexto do sistema.
 func init_message_list():
 	mensages_list = [{"role": "system", "content": npc_system}]
@@ -102,6 +106,12 @@ func _check_result(consulta_url):
 		"Authorization: Token %s" % token
 	]
 	http.request(consulta_url, headers)
+
+
+# Faz a configuração inicial do HTTPRequest.
+func configura_http():
+	add_child(http)
+	http.request_completed.connect(_on_HTTPRequest_request_completed)
 # ------------------------------------------------------------------------------------------------ #
 # --- Funções de interação com interface --------------------------------------------------------- #
 # Adiciona texto recebido a lista de mensagens e manda para a IA.
