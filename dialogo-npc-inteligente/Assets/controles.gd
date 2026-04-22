@@ -4,6 +4,7 @@ class_name Dialog_Box
 @export var npc_dialog_text_box : RichTextLabel
 @export var player_message : LineEdit
 @export var npc_name_box : Label
+@export var formulario : Formulario_Caso
 
 var current_npc : NPC_Inteligente
 
@@ -35,4 +36,9 @@ func _select_previous_suspect():
 
 func _select_next_suspect() -> void:
 	Global.suspect_list_next.emit()
+
+func _formulario_button_pressed():
+	formulario.visible = !(formulario.visible)
+	if formulario.visible:
+		formulario.update_caso_data(current_npc.caso_data)
 # ------------------------------------------------------------------------------------------------ #

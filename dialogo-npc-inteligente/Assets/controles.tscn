@@ -1,9 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3v4xtchtnnh"]
+[gd_scene load_steps=17 format=3 uid="uid://b3v4xtchtnnh"]
 
 [ext_resource type="Script" uid="uid://digsvgm0jw4yr" path="res://Assets/controles.gd" id="1_cg2eo"]
 [ext_resource type="StyleBox" uid="uid://c7380cfd57k0i" path="res://Styles/dialog_box_button_normal.tres" id="2_rdw6q"]
 [ext_resource type="StyleBox" uid="uid://cm7t52cnp4rl7" path="res://Styles/dialog_box_button_pressed.tres" id="3_lmi18"]
 [ext_resource type="StyleBox" uid="uid://b38kmepb46763" path="res://Styles/dialog_box_button_hover.tres" id="4_55arv"]
+[ext_resource type="StyleBox" uid="uid://0hed476o40qp" path="res://Styles/lateral_button_normal.tres" id="5_dpoph"]
+[ext_resource type="PackedScene" uid="uid://8l2jp1s84tht" path="res://Assets/formulario_caso.tscn" id="6_eqmtl"]
+[ext_resource type="StyleBox" uid="uid://d3qwxlonannji" path="res://Styles/lateral_button_pressed.tres" id="7_6bg7s"]
+[ext_resource type="StyleBox" uid="uid://nbpyqg334glg" path="res://Styles/lateral_button_hover.tres" id="8_gw138"]
+[ext_resource type="Texture2D" uid="uid://ks1ey14ndhid" path="res://Imagens/Formulario_icone.png" id="9_63vjk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qwf3l"]
 
@@ -28,7 +33,11 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coq2e"]
 
-[node name="Controles" type="Control" node_paths=PackedStringArray("npc_dialog_text_box", "player_message", "npc_name_box")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63vjk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6raxh"]
+
+[node name="Controles" type="Control" node_paths=PackedStringArray("npc_dialog_text_box", "player_message", "npc_name_box", "formulario")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,11 +45,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cg2eo")
-npc_dialog_text_box = NodePath("VBoxContainer/TextBox")
-player_message = NodePath("VBoxContainer/HBoxContainer/LineEdit")
-npc_name_box = NodePath("VBoxContainer/HBoxContainer2/Nome")
+npc_dialog_text_box = NodePath("Baixo/TextBox")
+player_message = NodePath("Baixo/HBoxContainer/LineEdit")
+npc_name_box = NodePath("Baixo/HBoxContainer2/Nome")
+formulario = NodePath("Formulario_Caso")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Baixo" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 1
 anchors_preset = 7
@@ -56,11 +66,11 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Baixo"]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+[node name="Button" type="Button" parent="Baixo/HBoxContainer2"]
 custom_minimum_size = Vector2(30, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_rdw6q")
@@ -70,10 +80,10 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_qwf3l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w4itc")
 text = "<"
 
-[node name="Nome" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Nome" type="Label" parent="Baixo/HBoxContainer2"]
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer2"]
+[node name="Button2" type="Button" parent="Baixo/HBoxContainer2"]
 custom_minimum_size = Vector2(30, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_rdw6q")
@@ -83,21 +93,21 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_qwf3l")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w4itc")
 text = ">"
 
-[node name="TextBox" type="RichTextLabel" parent="VBoxContainer"]
+[node name="TextBox" type="RichTextLabel" parent="Baixo"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_earxt")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Baixo"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="Baixo/HBoxContainer"]
 custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="Baixo/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_rdw6q")
@@ -107,6 +117,34 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_cg2eo")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_coq2e")
 text = "PERGUNTAR"
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button" to="." method="_select_previous_suspect"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button2" to="." method="_select_next_suspect"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="Formulario_Caso" parent="." instance=ExtResource("6_eqmtl")]
+visible = false
+layout_mode = 1
+
+[node name="Lado" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.99
+anchor_top = 0.04
+anchor_right = 0.99
+anchor_bottom = 0.66
+offset_left = -60.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Lado"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("5_dpoph")
+theme_override_styles/pressed = ExtResource("7_6bg7s")
+theme_override_styles/hover = ExtResource("8_gw138")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_63vjk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6raxh")
+icon = ExtResource("9_63vjk")
+icon_alignment = 1
+
+[connection signal="pressed" from="Baixo/HBoxContainer2/Button" to="." method="_select_previous_suspect"]
+[connection signal="pressed" from="Baixo/HBoxContainer2/Button2" to="." method="_select_next_suspect"]
+[connection signal="pressed" from="Baixo/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Lado/Button" to="." method="_formulario_button_pressed"]

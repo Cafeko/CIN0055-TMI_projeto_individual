@@ -8,7 +8,7 @@
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Dialog_Box" parent="CanvasLayer" instance=ExtResource("1_jjgbg")]
+[node name="Controles" parent="CanvasLayer" instance=ExtResource("1_jjgbg")]
 
 [node name="Suspeitos_List" parent="." instance=ExtResource("2_8gbba")]
 position = Vector2(576, 324)
