@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://fybsmnuouw75"]
+
+[ext_resource type="Script" uid="uid://b7p2ugvq2qljy" path="res://Scenes/go_to.gd" id="1_crked"]
+[ext_resource type="Texture2D" uid="uid://ctfcnhh0avoe3" path="res://Imagens/Imagem_menu.jpeg" id="2_crked"]
+
+[node name="Menu_Principal" type="Node"]
+script = ExtResource("1_crked")
+scene_path = "res://Scenes/main.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 328)
+scale = Vector2(1.2, 0.9)
+texture = ExtResource("2_crked")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -289.0
+offset_top = -510.0
+offset_right = 290.0
+offset_bottom = -441.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "SEI LÁ O NOME DESSA MERDA"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -88.0
+offset_right = 126.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "START"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

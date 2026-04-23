@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://4csce1u4ndru"]
+
+[ext_resource type="Texture2D" uid="uid://b5pwddt2f15a6" path="res://Imagens/derrota_image.jpeg" id="1_4ap6h"]
+[ext_resource type="Script" uid="uid://b7p2ugvq2qljy" path="res://Scenes/go_to.gd" id="1_bk58n"]
+
+[node name="Derrota" type="Node"]
+script = ExtResource("1_bk58n")
+scene_path = "res://Scenes/menu_principal.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 325)
+scale = Vector2(1.2, 0.75)
+texture = ExtResource("1_4ap6h")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -289.5
+offset_top = 138.0
+offset_right = 289.5
+offset_bottom = 207.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "O CRIMINOSO ESCAPOU"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -88.0
+offset_right = 126.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "MENU PRINCIPAL"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

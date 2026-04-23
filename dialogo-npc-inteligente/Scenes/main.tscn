@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyvdrqqwpg6kp"]
+[gd_scene load_steps=5 format=3 uid="uid://cyvdrqqwpg6kp"]
 
 [ext_resource type="PackedScene" uid="uid://c0jtl8ce3u17n" path="res://Assets/criador_de_casos.tscn" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b3v4xtchtnnh" path="res://Assets/controles.tscn" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://c6xejuv5i011" path="res://Imagens/Cenario.jpeg" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://rhp2g7wakgqo" path="res://Assets/suspeitos_list.tscn" id="2_8gbba"]
 
 [node name="Main" type="Node"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 354)
+scale = Vector2(0.6, 0.35)
+texture = ExtResource("1_jjvhh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

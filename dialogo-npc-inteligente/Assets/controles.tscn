@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3v4xtchtnnh"]
+[gd_scene load_steps=23 format=3 uid="uid://b3v4xtchtnnh"]
 
 [ext_resource type="Script" uid="uid://digsvgm0jw4yr" path="res://Assets/controles.gd" id="1_cg2eo"]
 [ext_resource type="StyleBox" uid="uid://c7380cfd57k0i" path="res://Styles/dialog_box_button_normal.tres" id="2_rdw6q"]
@@ -9,6 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://d3qwxlonannji" path="res://Styles/lateral_button_pressed.tres" id="7_6bg7s"]
 [ext_resource type="StyleBox" uid="uid://nbpyqg334glg" path="res://Styles/lateral_button_hover.tres" id="8_gw138"]
 [ext_resource type="Texture2D" uid="uid://ks1ey14ndhid" path="res://Imagens/Formulario_icone.png" id="9_63vjk"]
+[ext_resource type="Texture2D" uid="uid://bd1m8kx0cl0wx" path="res://Imagens/Algemas.png" id="10_6raxh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qwf3l"]
 
@@ -29,9 +30,38 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63vjk"]
+bg_color = Color(0.043137256, 0.043137256, 0.043137256, 0.8745098)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cg2eo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coq2e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhkup"]
+bg_color = Color(0.6342859, 0, 0.085462265, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jth3g"]
+bg_color = Color(0.44287318, 0, 0.046611987, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5rg3v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cjqk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63vjk"]
 
@@ -106,6 +136,7 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_63vjk")
 
 [node name="Button" type="Button" parent="Baixo/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -116,6 +147,21 @@ theme_override_styles/hover = ExtResource("4_55arv")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_cg2eo")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_coq2e")
 text = "PERGUNTAR"
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 0
+offset_left = 941.0
+offset_top = 322.0
+offset_right = 1141.0
+offset_bottom = 430.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nhkup")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jth3g")
+theme_override_styles/hover = ExtResource("4_55arv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5rg3v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8cjqk")
+text = "PRENDER"
+icon = ExtResource("10_6raxh")
 
 [node name="Formulario_Caso" parent="." instance=ExtResource("6_eqmtl")]
 visible = false
@@ -147,4 +193,5 @@ icon_alignment = 1
 [connection signal="pressed" from="Baixo/HBoxContainer2/Button" to="." method="_select_previous_suspect"]
 [connection signal="pressed" from="Baixo/HBoxContainer2/Button2" to="." method="_select_next_suspect"]
 [connection signal="pressed" from="Baixo/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_prender_button_pressed"]
 [connection signal="pressed" from="Lado/Button" to="." method="_formulario_button_pressed"]

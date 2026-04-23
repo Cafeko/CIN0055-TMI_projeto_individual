@@ -41,4 +41,12 @@ func _formulario_button_pressed():
 	formulario.visible = !(formulario.visible)
 	if formulario.visible:
 		formulario.update_caso_data(current_npc.caso_data)
+
+func _on_prender_button_pressed():
+	if current_npc.suspeito_data["culpado"] == true:
+		# ganhou
+		get_tree().change_scene_to_file("res://Scenes/vitoria.tscn")
+	else:
+		#perdeu
+		get_tree().change_scene_to_file("res://Scenes/derrota.tscn")
 # ------------------------------------------------------------------------------------------------ #

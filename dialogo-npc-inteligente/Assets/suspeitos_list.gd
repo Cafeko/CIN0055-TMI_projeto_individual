@@ -27,11 +27,16 @@ func next_suspeito():
 	var new_index = current_index + 1
 	if new_index >= suspeitos.size():
 		new_index = 0
+	current_invisible()
 	select_suspeito(new_index)
 
 
 func previous_suspeito():
 	var new_index = current_index - 1
 	if new_index < 0:
-		new_index = suspeitos.size() - 1 
+		new_index = suspeitos.size() - 1
+	current_invisible()
 	select_suspeito(new_index)
+
+func current_invisible():
+	suspeitos[current_index].visible = false

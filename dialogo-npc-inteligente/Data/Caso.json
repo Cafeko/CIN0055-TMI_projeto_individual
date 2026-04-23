@@ -1,56 +1,102 @@
 {
   "caso": {
-	"titulo": "O Assassinato na Mansão Blackwood",
-	"descricao": "A vítima, Arthur Blackwood, foi encontrada morta na biblioteca de sua mansão às 22h. Ele foi atingido na cabeça com um candelabro de metal. Não havia sinais de arrombamento.",
-	"local": "Biblioteca da mansão",
-	"hora_crime": "22:00",
-	"arma": "Candelabro de metal",
+	"titulo": "Morte no Jantar da Família Blackwood",
+	"descricao": "Durante um jantar na mansão Blackwood, Arthur Blackwood foi envenenado e morreu pouco depois de beber vinho. O crime aconteceu por volta das 21h30. Não houve sinais de luta.",
+	"local": "Sala de jantar da mansão",
+	"hora_crime": "21:30",
+	"arma": "Veneno no vinho",
 	"detalhes": [
-	  "A porta da biblioteca estava destrancada",
-	  "Havia um copo de vinho quebrado no chão",
-	  "A vítima discutiu com alguém antes de morrer",
-	  "Uma janela estava aberta",
-      "Pegadas de sapato estavam próximas à estante"
+	  "A taça da vítima continha resíduos de veneno",
+	  "Todas as taças foram servidas pelo mordomo",
+	  "A garrafa de vinho estava aberta antes do jantar",
+	  "A vítima discutiu com Ricardo e Clara mais cedo",
+	  "Clara foi vista na cozinha antes do jantar",
+	  "Eduardo afirmou que ninguém entrou na cozinha após ele sair",
+	  "Uma segunda garrafa de vinho foi encontrada aberta na despensa",
+	  "Henrique afirmou ter visto alguém mexendo na mesa antes do jantar",
+	  "Sofia disse ter ouvido passos na cozinha por volta das 21h",
+      "A vítima recentemente alterou seu testamento"
 	]
   },
   "suspeitos": [
 	{
 	  "id": 0,
 	  "nome": "Eduardo (Mordomo)",
+	  "sprite": "res://Imagens/sprite_Eduardo(Mordomo).png",
 	  "culpado": false,
-	  "personalidade": "Calmo, educado e leal",
-	  "alibi": "Estava na cozinha preparando chá às 22h",
+	  "personalidade": "Calmo, metódico",
+	  "alibi": "Serviu o jantar e permaneceu na sala durante a refeição",
 	  "informacoes": [
-		"Trabalha para a família há 20 anos",
-		"Ouviu um barulho alto vindo da biblioteca",
-		"Viu Clara passando pelo corredor pouco antes do crime",
-        "Diz que a vítima estava nervosa mais cedo"
+		"Foi responsável por servir todas as taças de vinho",
+		"Afirma que preparou tudo sozinho na cozinha",
+		"Disse que ninguém entrou na cozinha após ele sair",
+		"Percebeu que a vítima estava tensa antes do jantar",
+		"Viu Ricardo discutindo com a vítima mais cedo",
+        "Não notou nada estranho na garrafa principal"
 	  ]
 	},
 	{
 	  "id": 1,
 	  "nome": "Clara (Empregada)",
+	  "sprite": "res://Imagens/sprite_Clara(Empregada).png",
 	  "culpado": true,
-	  "personalidade": "Nervosa, defensiva",
-	  "alibi": "Diz que estava limpando o andar de cima",
+	  "personalidade": "Ansiosa, defensiva",
+	  "alibi": "Diz que estava organizando o salão no momento do crime",
 	  "informacoes": [
-		"Teve uma discussão com a vítima mais cedo",
-		"Foi vista perto da biblioteca pouco antes do crime",
+		"Foi vista na cozinha antes do jantar",
 		"Estava endividada e precisava de dinheiro",
-        "Suas pegadas combinam com as encontradas no local"
+		"Teve uma discussão com a vítima mais cedo",
+		"Conhecia os hábitos da vítima",
+		"Afirma não ter tocado em nada relacionado ao jantar",
+        "Nega ter visto qualquer garrafa extra"
 	  ]
 	},
 	{
 	  "id": 2,
 	  "nome": "Ricardo (Herdeiro)",
+	  "sprite": "res://Imagens/sprite_Ricardo(Herdeiro).png",
 	  "culpado": false,
 	  "personalidade": "Arrogante, impaciente",
-	  "alibi": "Estava em seu quarto bebendo",
+	  "alibi": "Estava na sala desde o início do jantar",
 	  "informacoes": [
-		"Tinha conflitos frequentes com a vítima",
-		"É o principal herdeiro da fortuna",
-		"Afirma não ter saído do quarto",
-        "Não há evidências físicas ligando-o ao crime"
+		"Discutiu com a vítima sobre dinheiro",
+		"Seria o maior beneficiado pelo testamento antigo",
+		"Ficou irritado durante o jantar",
+		"Afirma não ter saído da mesa em nenhum momento",
+		"Diz que Clara parecia nervosa naquela noite",
+        "Alega que Eduardo demorou mais que o normal na cozinha"
+	  ]
+	},
+	{
+	  "id": 3,
+	  "nome": "Henrique (Advogado da família)",
+	  "sprite": "res://Imagens/sprite_Henrique(Advogado).png",
+	  "culpado": false,
+	  "personalidade": "Observador, calculista",
+	  "alibi": "Estava na biblioteca revisando documentos antes do jantar",
+	  "informacoes": [
+		"Sabia que a vítima havia alterado o testamento recentemente",
+		"Afirma que Ricardo perderia parte da herança",
+		"Viu alguém mexendo na mesa antes do jantar",
+		"Não conseguiu identificar quem era",
+		"Chegou à sala de jantar pouco antes do crime",
+        "Acredita que o crime foi premeditado"
+	  ]
+	},
+	{
+	  "id": 4,
+	  "nome": "Sofia (Convidada)",
+	  "sprite": "res://Imagens/sprite_Sofia(Convidada).png",
+	  "culpado": false,
+	  "personalidade": "Curiosa, atenta",
+	  "alibi": "Estava no jardim pouco antes do jantar",
+	  "informacoes": [
+		"Ouviu passos na cozinha por volta das 21h",
+		"Viu Clara saindo do corredor que leva à cozinha",
+		"Achou estranho haver duas garrafas de vinho",
+		"Notou que a vítima parecia preocupada",
+		"Não tem relação direta com a herança",
+        "Observou tensão entre todos os presentes"
 	  ]
 	}
   ]

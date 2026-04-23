@@ -25,6 +25,12 @@ func load_caso():
 # Cria os suspeitos que serão interrogados e adiciona eles a lista de suspeitos.
 func cria_suspeitos():
 	for sus_data in dados_suspeitos:
+		# Cria suspeito.
 		var novo_suspeito = Suspeito.new(dados_caso, sus_data)
+		# Adiciona a lista de suspeitos.
 		suspeitos_list.add_Suspeitos(novo_suspeito)
+		# Cria sprite do suspeito.
+		var sprite = Sprite2D.new()
+		sprite.texture = load(sus_data["sprite"])
+		novo_suspeito.add_child(sprite)
 	suspeitos_list.select_suspeito(0)

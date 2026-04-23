@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://yxc0qkcasbea"]
+
+[ext_resource type="Texture2D" uid="uid://btlo6juj8egw2" path="res://Imagens/vitoria_image.jpeg" id="1_oexkw"]
+[ext_resource type="Script" uid="uid://b7p2ugvq2qljy" path="res://Scenes/go_to.gd" id="1_q8ate"]
+
+[node name="Vitoria" type="Node"]
+script = ExtResource("1_q8ate")
+scene_path = "res://Scenes/menu_principal.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 395)
+scale = Vector2(1.2, 0.8)
+texture = ExtResource("1_oexkw")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -289.0
+offset_top = -510.0
+offset_right = 290.0
+offset_bottom = -441.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "O CRIMINOSO FOI PEGO"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -88.0
+offset_right = 126.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "MENU PRINCIPAL"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
