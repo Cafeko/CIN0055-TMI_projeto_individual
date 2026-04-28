@@ -20,5 +20,5 @@ texture = ExtResource("1_jjvhh")
 position = Vector2(576, 324)
 
 [node name="Criador_de_casos" parent="." node_paths=PackedStringArray("suspeitos_list") instance=ExtResource("1_8gbba")]
-caso_path = "res://Data/Caso2.json"
+caso_path = "res://Data/Caso3.json"
 suspeitos_list = NodePath("../Suspeitos_List")

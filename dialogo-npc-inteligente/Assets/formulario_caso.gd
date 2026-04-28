@@ -17,5 +17,6 @@ func update_caso_data(caso):
 	hora.text = "Hora: " + caso["hora_crime"]
 	arma.text = "Arma: " + caso["arma"]
 	# adicionar detalhes
+	detalhes_container.text = ""
 	for detalhe in caso["detalhes"]:
 		detalhes_container.text += "- " + detalhe + "\n"

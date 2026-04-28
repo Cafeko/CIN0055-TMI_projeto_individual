@@ -1,0 +1,98 @@
+{
+  "caso": {
+	"titulo": "Silêncio na Biblioteca",
+	"descricao": "Arthur Blackwood foi encontrado morto em sua biblioteca por volta das 22h15. Inicialmente parecia um ataque com objeto contundente, mas a perícia indicou que ele já estava inconsciente antes do golpe.",
+	"local": "Biblioteca da mansão",
+	"hora_crime": "22:15",
+	"arma": "Sedativo + golpe encenado",
+	"detalhes": [
+	  "A vítima tinha traços de sedativo no sangue",
+	  "Um copo de whisky foi encontrado na mesa",
+	  "O candelabro usado no golpe estava limpo demais",
+	  "Não havia sinais de luta",
+	  "A porta estava fechada, mas não trancada",
+	  "Clara levou bebidas para a vítima antes do crime",
+	  "Eduardo afirma que ninguém entrou na biblioteca depois disso",
+	  "Ricardo foi visto discutindo com a vítima mais cedo",
+	  "Henrique sabia que a vítima pretendia mudar o testamento naquela noite",
+      "Sofia viu alguém saindo da biblioteca pouco antes das 22h15"
+	]
+  },
+  "suspeitos": [
+	{
+	  "id": 0,
+	  "nome": "Eduardo (Mordomo)",
+	  "sprite": "res://Imagens/sprite_Eduardo(Mordomo).png",
+	  "culpado": false,
+	  "personalidade": "Calmo, observador",
+	  "alibi": "Estava organizando a cozinha",
+	  "informacoes": [
+		"Afirma que Clara levou a bebida para a vítima",
+		"Disse que não viu ninguém entrar depois disso",
+		"Percebeu que o candelabro estava fora do lugar",
+		"Acredita que alguém tentou encenar o crime",
+        "Ouviu passos no corredor antes do horário estimado da morte"
+	  ]
+	},
+	{
+	  "id": 1,
+	  "nome": "Clara (Empregada)",
+	  "sprite": "res://Imagens/sprite_Clara(Empregada).png",
+	  "culpado": false,
+	  "personalidade": "Nervosa, cuidadosa",
+	  "alibi": "Levou o whisky e saiu logo depois",
+	  "informacoes": [
+		"Serviu a bebida à vítima",
+		"Afirma que não colocou nada no copo",
+		"Diz que a vítima parecia cansada",
+		"Viu Henrique no corredor após sair da biblioteca",
+        "Não voltou ao local depois disso"
+	  ]
+	},
+	{
+	  "id": 2,
+	  "nome": "Ricardo (Herdeiro)",
+	  "sprite": "res://Imagens/sprite_Ricardo(Herdeiro).png",
+	  "culpado": false,
+	  "personalidade": "Impaciente, agressivo",
+	  "alibi": "Estava em seu quarto",
+	  "informacoes": [
+		"Discutiu com a vítima mais cedo",
+		"Sabia da mudança no testamento",
+		"Afirma não ter voltado à biblioteca",
+		"Diz que Henrique tinha mais a perder que ele",
+        "Estava visivelmente irritado naquela noite"
+	  ]
+	},
+	{
+	  "id": 3,
+	  "nome": "Henrique (Advogado da família)",
+	  "sprite": "res://Imagens/sprite_Henrique(Advogado).png",
+	  "culpado": true,
+	  "personalidade": "Frio, estratégico",
+	  "alibi": "Diz que estava no escritório",
+	  "informacoes": [
+		"Sabia que perderia benefícios com o novo testamento",
+		"Foi visto no corredor próximo à biblioteca",
+		"Afirma que apenas passou pelo local",
+		"Diz que encontrou a vítima já morta",
+        "Evita explicar exatamente o que fez entre 22h e 22h15"
+	  ]
+	},
+	{
+	  "id": 4,
+	  "nome": "Sofia (Convidada)",
+	  "sprite": "res://Imagens/sprite_Sofia(Convidada).png",
+	  "culpado": false,
+	  "personalidade": "Atenta, curiosa",
+	  "alibi": "Estava lendo na sala ao lado",
+	  "informacoes": [
+		"Viu alguém saindo da biblioteca pouco antes do horário da morte",
+		"Acredita que era Henrique",
+		"Não ouviu nenhum barulho de luta",
+		"Achou estranho o silêncio",
+        "Percebeu que a luz da biblioteca estava acesa"
+	  ]
+	}
+  ]
+}
