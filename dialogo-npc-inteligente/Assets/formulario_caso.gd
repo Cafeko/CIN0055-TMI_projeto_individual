@@ -16,12 +16,6 @@ func update_caso_data(caso):
 	local.text = "Local: " + caso["local"]
 	hora.text = "Hora: " + caso["hora_crime"]
 	arma.text = "Arma: " + caso["arma"]
-	# limpar detalhes antigos
-	for child in detalhes_container.get_children():
-		child.queue_free()
 	# adicionar detalhes
 	for detalhe in caso["detalhes"]:
-		var label = Label.new()
-		label.text = "- " + detalhe
-		label.add_theme_color_override("font_color", Color(0, 0, 0))
-		detalhes_container.add_child(label)
+		detalhes_container.text += "- " + detalhe + "\n"

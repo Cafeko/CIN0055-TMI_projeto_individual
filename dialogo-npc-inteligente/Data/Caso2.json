@@ -1,0 +1,103 @@
+{
+  "caso": {
+	"titulo": "O Tiro na Sala de Estudos",
+	"descricao": "Arthur Blackwood foi encontrado morto em sua sala de estudos com um tiro no peito. A morte ocorreu por volta das 21h. A arma do crime não foi encontrada no local.",
+	"local": "Sala de estudos da mansão",
+	"hora_crime": "21:00",
+	"arma": "Arma de fogo desaparecida",
+	"detalhes": [
+	  "A porta da sala estava trancada por dentro",
+	  "Uma janela estava aberta",
+	  "Havia marcas de pólvora na camisa da vítima",
+	  "Nenhuma arma foi encontrada no local",
+	  "Um revólver da casa está desaparecido",
+	  "A vítima discutiu com Ricardo pouco antes do crime",
+	  "Clara ouviu um barulho alto por volta das 21h",
+	  "Eduardo afirma que todas as armas ficavam guardadas no escritório",
+	  "Henrique diz que viu Ricardo próximo à sala antes do disparo",
+	  "Sofia afirma que viu alguém sair correndo da área externa da casa",
+	"Teste",
+	"Teste",
+	"Teste",
+	"Teste",
+	"Teste",
+	]
+  },
+  "suspeitos": [
+	{
+	  "id": 0,
+	  "nome": "Eduardo (Mordomo)",
+	  "sprite": "res://Imagens/sprite_Eduardo(Mordomo).png",
+	  "culpado": false,
+	  "personalidade": "Calmo, preciso",
+	  "alibi": "Estava organizando a cozinha no momento do disparo",
+	  "informacoes": [
+		"Disse que todas as armas ficavam guardadas no escritório",
+		"Afirma que Ricardo sabia onde ficava a chave do armário",
+		"Ouviu o disparo, mas não saiu imediatamente",
+		"Não viu ninguém entrar na sala",
+        "Acredita que alguém pegou a arma antes do crime"
+	  ]
+	},
+	{
+	  "id": 1,
+	  "nome": "Clara (Empregada)",
+	  "sprite": "res://Imagens/sprite_Clara(Empregada).png",
+	  "culpado": false,
+	  "personalidade": "Nervosa, sincera",
+	  "alibi": "Estava limpando o corredor",
+	  "informacoes": [
+		"Ouviu o tiro por volta das 21h",
+		"Ficou assustada e se escondeu",
+		"Não viu ninguém saindo pela porta da sala",
+		"Diz que a janela já estava aberta antes",
+        "Viu Henrique passando pelo corredor antes do disparo"
+	  ]
+	},
+	{
+	  "id": 2,
+	  "nome": "Ricardo (Herdeiro)",
+	  "sprite": "res://Imagens/sprite_Ricardo(Herdeiro).png",
+	  "culpado": true,
+	  "personalidade": "Arrogante, agressivo",
+	  "alibi": "Diz que estava em seu quarto",
+	  "informacoes": [
+		"Discutiu com a vítima pouco antes do crime",
+		"Sabia onde ficava a arma da casa",
+		"Afirma não ter saído do quarto",
+		"Foi visto próximo à sala por Henrique",
+        "Diz que alguém pode ter entrado pela janela"
+	  ]
+	},
+	{
+	  "id": 3,
+	  "nome": "Henrique (Advogado da família)",
+	  "sprite": "res://Imagens/sprite_Henrique(Advogado).png",
+	  "culpado": false,
+	  "personalidade": "Analítico, frio",
+	  "alibi": "Estava lendo na biblioteca",
+	  "informacoes": [
+		"Viu Ricardo perto da sala antes do disparo",
+		"Ouviu o tiro logo depois",
+		"Afirma que ninguém entrou ou saiu pela porta",
+		"Acredita que o criminoso conhecia bem a casa",
+        "Descartou a hipótese de suicídio"
+	  ]
+	},
+	{
+	  "id": 4,
+	  "nome": "Sofia (Convidada)",
+	  "sprite": "res://Imagens/sprite_Sofia(Convidada).png",
+	  "culpado": false,
+	  "personalidade": "Atenta, curiosa",
+	  "alibi": "Estava do lado de fora da casa",
+	  "informacoes": [
+		"Ouviu o disparo de fora",
+		"Viu alguém sair correndo pela lateral da casa",
+		"Não conseguiu ver o rosto",
+		"Achou estranho a janela estar aberta",
+        "Acredita que o assassino fugiu por ali"
+	  ]
+	}
+  ]
+}
