@@ -17,10 +17,14 @@ func _ready() -> void:
 func connect_npc(npc):
 	current_npc = npc
 	npc_name_box.text = current_npc.suspeito_data["nome"]
+	update_to_recent_dialog()
 
 # Atualiza caixa de texto do npc com o texto recebido.
 func _update_npc_dialog(text:String):
 	npc_dialog_text_box.text = text
+
+func update_to_recent_dialog():
+	_update_npc_dialog(current_npc.get_recent_message())
 
 # Manda mensagem escrita pelo player para o NPC_Inteligente conectado atualmente.
 func _on_button_pressed():

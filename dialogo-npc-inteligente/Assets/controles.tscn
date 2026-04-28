@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3v4xtchtnnh"]
+[gd_scene load_steps=24 format=3 uid="uid://b3v4xtchtnnh"]
 
 [ext_resource type="Script" uid="uid://digsvgm0jw4yr" path="res://Assets/controles.gd" id="1_cg2eo"]
 [ext_resource type="StyleBox" uid="uid://c7380cfd57k0i" path="res://Styles/dialog_box_button_normal.tres" id="2_rdw6q"]
@@ -14,6 +14,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qwf3l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4itc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6raxh"]
+bg_color = Color(0.17641911, 0.17641908, 0.17641908, 0.61960787)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_earxt"]
 content_margin_left = 20.0
@@ -112,6 +115,8 @@ text = "<"
 
 [node name="Nome" type="Label" parent="Baixo/HBoxContainer2"]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6raxh")
+text = "Teste"
 
 [node name="Button2" type="Button" parent="Baixo/HBoxContainer2"]
 custom_minimum_size = Vector2(30, 20)

@@ -44,6 +44,12 @@ func add_user_message(text):
 func add_assistant_message(text):
 	var assistant_message = {"role": "assistant", "content": text}
 	add_new_message(assistant_message)
+
+func get_recent_message():
+	var message = mensages_list[-1]
+	if message["role"] == "assistant":
+		return message["content"]
+	return ""
 # ------------------------------------------------------------------------------------------------ #
 # --- Funções de comunicação com IA  ------------------------------------------------------------- #
 # Utiliza API para mandar uma requisição com uma lista de mensagens para a IA.
