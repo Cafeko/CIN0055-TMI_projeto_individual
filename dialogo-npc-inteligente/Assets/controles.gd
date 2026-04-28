@@ -5,6 +5,7 @@ class_name Dialog_Box
 @export var player_message : LineEdit
 @export var npc_name_box : Label
 @export var formulario : Formulario_Caso
+@export var dialog_log : Dialog_Log
 
 var current_npc : NPC_Inteligente
 
@@ -18,13 +19,20 @@ func connect_npc(npc):
 	current_npc = npc
 	npc_name_box.text = current_npc.suspeito_data["nome"]
 	update_to_recent_dialog()
+	update_dialog_log()
 
 # Atualiza caixa de texto do npc com o texto recebido.
 func _update_npc_dialog(text:String):
 	npc_dialog_text_box.text = text
+	update_dialog_log()
 
+# Atualiza texto exibido na caixa de dialogo.
 func update_to_recent_dialog():
 	_update_npc_dialog(current_npc.get_recent_message())
+
+# Atualiza log de dealogo.
+func update_dialog_log():
+	dialog_log.update_text_space(current_npc.get_message_log())
 
 # Manda mensagem escrita pelo player para o NPC_Inteligente conectado atualmente.
 func _on_button_pressed():
@@ -45,6 +53,9 @@ func _formulario_button_pressed():
 	formulario.visible = !(formulario.visible)
 	if formulario.visible:
 		formulario.update_caso_data(current_npc.caso_data)
+
+func _dialog_log_button_pressed():
+	dialog_log.visible = !(dialog_log.visible)
 
 func _on_prender_button_pressed():
 	if current_npc.suspeito_data["culpado"] == true:

@@ -45,6 +45,7 @@ func add_assistant_message(text):
 	var assistant_message = {"role": "assistant", "content": text}
 	add_new_message(assistant_message)
 
+# Retorna o texto da mensagem mais recente da IA.
 func get_recent_message():
 	var message = mensages_list[-1]
 	if message["role"] == "assistant":

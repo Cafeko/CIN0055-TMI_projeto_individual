@@ -6,12 +6,12 @@
 bg_color = Color(0, 0, 0, 0.38039216)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpevj"]
-bg_color = Color(0.973535, 0.9735351, 0.973535, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.067437805, 0.06743773, 0.06743767, 1)
+bg_color = Color(0.96767145, 0.96767133, 0.96767145, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [node name="Formulario_Caso" type="Panel"]
 custom_minimum_size = Vector2(900, 585)
@@ -47,7 +47,7 @@ anchor_bottom = 1.0
 offset_left = 25.0
 offset_top = 30.0
 offset_right = -14.0
-offset_bottom = 248.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20

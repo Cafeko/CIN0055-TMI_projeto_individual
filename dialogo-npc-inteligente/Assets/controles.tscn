@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b3v4xtchtnnh"]
+[gd_scene load_steps=26 format=3 uid="uid://b3v4xtchtnnh"]
 
 [ext_resource type="Script" uid="uid://digsvgm0jw4yr" path="res://Assets/controles.gd" id="1_cg2eo"]
 [ext_resource type="StyleBox" uid="uid://c7380cfd57k0i" path="res://Styles/dialog_box_button_normal.tres" id="2_rdw6q"]
@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://0hed476o40qp" path="res://Styles/lateral_button_normal.tres" id="5_dpoph"]
 [ext_resource type="PackedScene" uid="uid://8l2jp1s84tht" path="res://Assets/formulario_caso.tscn" id="6_eqmtl"]
 [ext_resource type="StyleBox" uid="uid://d3qwxlonannji" path="res://Styles/lateral_button_pressed.tres" id="7_6bg7s"]
+[ext_resource type="PackedScene" uid="uid://cu2kc1o34e315" path="res://Assets/dialog_log.tscn" id="7_nhkup"]
 [ext_resource type="StyleBox" uid="uid://nbpyqg334glg" path="res://Styles/lateral_button_hover.tres" id="8_gw138"]
 [ext_resource type="Texture2D" uid="uid://ks1ey14ndhid" path="res://Imagens/Formulario_icone.png" id="9_63vjk"]
 [ext_resource type="Texture2D" uid="uid://bd1m8kx0cl0wx" path="res://Imagens/Algemas.png" id="10_6raxh"]
@@ -70,7 +71,14 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6raxh"]
 
-[node name="Controles" type="Control" node_paths=PackedStringArray("npc_dialog_text_box", "player_message", "npc_name_box", "formulario")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rg3v"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="Controles" type="Control" node_paths=PackedStringArray("npc_dialog_text_box", "player_message", "npc_name_box", "formulario", "dialog_log")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,6 +90,7 @@ npc_dialog_text_box = NodePath("Baixo/TextBox")
 player_message = NodePath("Baixo/HBoxContainer/LineEdit")
 npc_name_box = NodePath("Baixo/HBoxContainer2/Nome")
 formulario = NodePath("Formulario_Caso")
+dialog_log = NodePath("Dialog_Log")
 
 [node name="Baixo" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(1000, 200)
@@ -172,6 +181,10 @@ icon = ExtResource("10_6raxh")
 visible = false
 layout_mode = 1
 
+[node name="Dialog_Log" parent="." instance=ExtResource("7_nhkup")]
+visible = false
+layout_mode = 1
+
 [node name="Lado" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 1
@@ -195,8 +208,52 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_6raxh")
 icon = ExtResource("9_63vjk")
 icon_alignment = 1
 
+[node name="Button2" type="Button" parent="Lado"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("5_dpoph")
+theme_override_styles/pressed = ExtResource("7_6bg7s")
+theme_override_styles/hover = ExtResource("8_gw138")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_63vjk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6raxh")
+icon_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Lado/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.52002
+offset_top = 15.080002
+offset_right = -10.47998
+offset_bottom = -12.919998
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Lado/Button2/VBoxContainer"]
+custom_minimum_size = Vector2(35, 7)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5rg3v")
+
+[node name="Panel2" type="Panel" parent="Lado/Button2/VBoxContainer"]
+custom_minimum_size = Vector2(25, 7)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5rg3v")
+
+[node name="Panel3" type="Panel" parent="Lado/Button2/VBoxContainer"]
+custom_minimum_size = Vector2(31, 7)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5rg3v")
+
 [connection signal="pressed" from="Baixo/HBoxContainer2/Button" to="." method="_select_previous_suspect"]
 [connection signal="pressed" from="Baixo/HBoxContainer2/Button2" to="." method="_select_next_suspect"]
 [connection signal="pressed" from="Baixo/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_prender_button_pressed"]
 [connection signal="pressed" from="Lado/Button" to="." method="_formulario_button_pressed"]
+[connection signal="pressed" from="Lado/Button2" to="." method="_dialog_log_button_pressed"]

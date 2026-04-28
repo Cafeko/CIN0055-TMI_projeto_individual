@@ -62,4 +62,14 @@ func create_system_prompt(suspeito, caso):
 		prompt += "- Negue acusações falsas\n"
 	# Retorna prompt final.
 	return prompt
+
+# Retorna texto com o historico de mensagens do suspeito.
+func get_message_log():
+	var message_log = ""
+	for m in mensages_list.slice(1):
+		if m["role"] == "assistant":
+			message_log += suspeito_data["nome"] + ": " + m["content"] + "\n\n"
+		elif m["role"] == "user":
+			message_log += "You: " + m["content"] + "\n\n"
+	return message_log
 # ------------------------------------------------------------------------------------------------ #
